@@ -187,36 +187,37 @@ const fetchWeatherForecast = () => {
     });
 };
 
-const getMoment = locationName => {
-  const location = sunriseAndSunsetData.find(
-    data => data.locationName === locationName,
-  );
+// TODO: fix error
+// const getMoment = (locationName) => {
+//   const location = sunriseAndSunsetData.find(
+//     data => data.locationName === locationName,
+//   );
 
-  if (!location) return null;
+//   if (!location) return null;
 
-  const now = new Date();
-  const nowDate = Intl.DateTimeFormat('zh-TW', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  })
-    .format(now)
-    .replace(/\//g, '-');
+//   const now = new Date();
+//   const nowDate = Intl.DateTimeFormat('zh-TW', {
+//     year: 'numeric',
+//     month: '2-digit',
+//     day: '2-digit',
+//   })
+//     .format(now)
+//     .replace(/\//g, '-');
 
-  const locationDate =
-    location.time && location.time.find(time => time.dataTime === nowDate);
-  const sunriseTimestamp = new Date(
-    `${locationDate.dataTime} ${locationDate.sunrise}`,
-  ).getTime();
-  const sunsetTimestamp = new Date(
-    `${locationDate.dataTime} ${locationDate.sunset}`,
-  ).getTime();
-  const nowTimeStamp = now.getTime();
+//   const locationDate =
+//     location.time && location.time.find(time => time.dataTime === nowDate);
+//   const sunriseTimestamp = new Date(
+//     `${locationDate.dataTime} ${locationDate.sunrise}`,
+//   ).getTime();
+//   const sunsetTimestamp = new Date(
+//     `${locationDate.dataTime} ${locationDate.sunset}`,
+//   ).getTime();
+//   const nowTimeStamp = now.getTime();
 
-  return sunriseTimestamp <= nowTimeStamp && nowTimeStamp <= sunsetTimestamp
-    ? 'day'
-    : 'night';
-};
+//   return sunriseTimestamp <= nowTimeStamp && nowTimeStamp <= sunsetTimestamp
+//     ? 'day'
+//     : 'night';
+// };
 
 const WeatherApp = () => {
   console.log('--- invoke function component ---');
@@ -267,16 +268,17 @@ const WeatherApp = () => {
 
     fetchingData();
   }, []);
-
-  const moment = useMemo(() => getMoment(locationName), [locationName]);
+  // TODO: fix error
+  // const moment = useMemo(() => getMoment(locationName), [locationName]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  useEffect(() => {
-    setCurrentTheme(moment === 'day' ? 'light' : 'dark');
-  }, [moment]);
+  // TODO: fix error
+  // useEffect(() => {
+  //   setCurrentTheme(moment === 'day' ? 'light' : 'dark');
+  // }, [moment]);
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
@@ -293,7 +295,9 @@ const WeatherApp = () => {
             </Temperature>
             <WeatherIcon
               currentWeatherCode={weatherCode}
-              moment={moment || 'day'}
+              // TODO: fix error
+              // moment={moment || 'day'}
+              moment={'day'}
             />
           </CurrentWeather>
           <AirFlow>
@@ -307,9 +311,9 @@ const WeatherApp = () => {
           <Refresh onClick={fetchData} isLoading={isLoading}>
             最後觀測時間：
             {new Intl.DateTimeFormat('zh-TW', {
-              hour: 'numeric',
-              minute: 'numeric',
-            }).format(new Date(observationTime))}{' '}
+            hour: 'numeric',
+            minute: 'numeric',
+          }).format(new Date(observationTime))}{' '}
             {isLoading ? <LoadingIcon /> : <RefreshIcon />}
           </Refresh>
         </WeatherCard>
