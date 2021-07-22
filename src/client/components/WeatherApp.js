@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styled from '@emotion/styled';
 import WeatherIcon from './WeatherIcon.js';
-import { ReactComponent as AirFlowIcon } from './images/airFlow.svg';
-import { ReactComponent as RainIcon } from './images/rain.svg';
-import { ReactComponent as RefreshIcon } from './images/refresh.svg';
-import { ReactComponent as LoadingIcon } from './images/loading.svg';
-import sunriseAndSunsetData from './sunrise-sunset.json';
 import { ThemeProvider } from 'emotion-theming';
+// import RainIcon from './images/rain.svg';
+// import RefreshIcon from './images/refresh.svg';
+// import LoadingIcon from './images/loading.svg';
+
+// import AirFlowIcon from './images/airFlow.svg';
+// import { ReactComponent as AirFlowIcon } from './images/airFlow.svg';
+// import { ReactComponent as RainIcon } from './images/rain.svg';
+// import { ReactComponent as RefreshIcon } from './images/refresh.svg';
+// import { ReactComponent as LoadingIcon } from './images/loading.svg';
+import sunriseAndSunsetData from './sunrise-sunset.json';
 
 const theme = {
   light: {
@@ -220,7 +225,6 @@ const fetchWeatherForecast = () => {
 // };
 
 const WeatherApp = () => {
-  console.log('--- invoke function component ---');
   const [weatherElement, setWeatherElement] = useState({
     observationTime: new Date(),
     locationName: '',
@@ -271,9 +275,9 @@ const WeatherApp = () => {
   // TODO: fix error
   // const moment = useMemo(() => getMoment(locationName), [locationName]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [fetchData]);
 
   // TODO: fix error
   // useEffect(() => {
@@ -301,11 +305,11 @@ const WeatherApp = () => {
             />
           </CurrentWeather>
           <AirFlow>
-            <AirFlowIcon />
+            {/* <AirFlowIcon /> */}
             {windSpeed} m/h
           </AirFlow>
           <Rain>
-            <RainIcon />
+            {/* <RainIcon /> */}
             {Math.round(rainPossibility)} %
           </Rain>
           <Refresh onClick={fetchData} isLoading={isLoading}>
@@ -314,7 +318,8 @@ const WeatherApp = () => {
             hour: 'numeric',
             minute: 'numeric',
           }).format(new Date(observationTime))}{' '}
-            {isLoading ? <LoadingIcon /> : <RefreshIcon />}
+            {/* {isLoading ? <LoadingIcon /> : <RefreshIcon />} */}
+            {isLoading ? '<LoadingIcon />' : '<RefreshIcon />'}
           </Refresh>
         </WeatherCard>
       </Container>
