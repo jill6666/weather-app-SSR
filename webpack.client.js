@@ -3,37 +3,49 @@ const path = require("path");
 module.exports = {
     mode: 'development',
     target: "node",
-    entry: "./src/client/client.js",
+    entry: ['@babel/polyfill', "./src/client/client.js"],
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "public"),
     },
     module: {
         rules: [
+            //第一個loader編譯JSX
             {
-                test: /\.js$/,
-                loader: "babel-loader",
+                test: /.jsx$/,
                 exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: { presets: ['@babel/preset-react', '@babel/preset-env'] }
+                }
             },
+            //第二個loader編譯ES6
             {
-                test: /\.css$/i,
-                use: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            injectType: 'singletonStyleTag', // 多個 CSS 合併為單一個 style 標籤
-                            attributes: {
-                                id: 'allCSS', // 附加 id 屬性並定義其值為 "allCSS"
-                            },
-                        },
-                    },
-                    'css-loader',
-                ],
+                test: /.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: { presets: ['@babel/preset-env'] }
+                }
             },
             {
                 test: /\.svg$/,
-                use: ['svg-inline-loader']
+                use: {
+                    loader: '@svgr/webpack'
+                },
             },
         ],
     },
+    resolve: {
+        extensions: [
+            '.js',
+            '.jsx'
+        ],
+        alias: {
+            'react-dom': '@hot-loader/react-dom'
+        }
+    },
+    devServer: {
+        contentBase: './dist'
+    }
 };

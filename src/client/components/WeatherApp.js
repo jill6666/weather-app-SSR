@@ -1,16 +1,16 @@
+import '@babel/polyfill';
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styled from '@emotion/styled';
 import WeatherIcon from './WeatherIcon.js';
 import { ThemeProvider } from 'emotion-theming';
-// import RainIcon from './images/rain.svg';
-// import RefreshIcon from './images/refresh.svg';
-// import LoadingIcon from './images/loading.svg';
-
-// import AirFlowIcon from './images/airFlow.svg';
-// import { ReactComponent as AirFlowIcon } from './images/airFlow.svg';
-// import { ReactComponent as RainIcon } from './images/rain.svg';
-// import { ReactComponent as RefreshIcon } from './images/refresh.svg';
-// import { ReactComponent as LoadingIcon } from './images/loading.svg';
+import { airFlowIcon } from '../../../public/images/airFlow.svg';
+import RainIcon from '../../../public/images/refresh.svg';
+import LoadingIcon from '../../../public/images/loading.svg';
+import RefreshIcon from '../../../public/images/airFlow.svg';
+import { ReactComponent as AirFlowIcon } from '../../../public/images/airFlow.svg';
+// import { ReactComponent as RainIcon } from '../../../public/images/refresh.svg';
+// import { ReactComponent as LoadingIcon } from '../../../public/images/loading.svg';
+// import { ReactComponent as RefreshIcon } from '../../../public/images/airFlow.svg';
 import sunriseAndSunsetData from './sunrise-sunset.json';
 
 const theme = {
@@ -89,7 +89,7 @@ const AirFlow = styled.div`
   color: ${({ theme }) => theme.textColor};
   margin-bottom: 20px;
 
-  svg {
+  img {
     width: 25px;
     height: auto;
     margin-right: 30px;
@@ -103,7 +103,7 @@ const Rain = styled.div`
   font-weight: 300;
   color: ${({ theme }) => theme.textColor};
 
-  svg {
+  img {
     width: 25px;
     height: auto;
     margin-right: 30px;
@@ -117,9 +117,10 @@ const Refresh = styled.div`
   font-size: 12px;
   display: inline-flex;
   align-items: flex-end;
+  cursor: pointer;
   color: ${({ theme }) => theme.textColor};
 
-  svg {
+  img {
     margin-left: 10px;
     width: 15px;
     height: 15px;
@@ -192,37 +193,36 @@ const fetchWeatherForecast = () => {
     });
 };
 
-// TODO: fix error
-// const getMoment = (locationName) => {
-//   const location = sunriseAndSunsetData.find(
-//     data => data.locationName === locationName,
-//   );
+const getMoment = (locationName) => {
+  const location = sunriseAndSunsetData.find(
+    data => data.locationName === locationName,
+  );
 
-//   if (!location) return null;
+  if (!location) return null;
 
-//   const now = new Date();
-//   const nowDate = Intl.DateTimeFormat('zh-TW', {
-//     year: 'numeric',
-//     month: '2-digit',
-//     day: '2-digit',
-//   })
-//     .format(now)
-//     .replace(/\//g, '-');
+  const now = new Date();
+  const nowDate = Intl.DateTimeFormat('zh-TW', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .format(now)
+    .replace(/\//g, '-');
 
-//   const locationDate =
-//     location.time && location.time.find(time => time.dataTime === nowDate);
-//   const sunriseTimestamp = new Date(
-//     `${locationDate.dataTime} ${locationDate.sunrise}`,
-//   ).getTime();
-//   const sunsetTimestamp = new Date(
-//     `${locationDate.dataTime} ${locationDate.sunset}`,
-//   ).getTime();
-//   const nowTimeStamp = now.getTime();
+  const locationDate =
+    location.time && location.time.find(time => time.dataTime === nowDate);
+  const sunriseTimestamp = new Date(
+    `${locationDate.dataTime} ${locationDate.sunrise}`,
+  ).getTime();
+  const sunsetTimestamp = new Date(
+    `${locationDate.dataTime} ${locationDate.sunset}`,
+  ).getTime();
+  const nowTimeStamp = now.getTime();
 
-//   return sunriseTimestamp <= nowTimeStamp && nowTimeStamp <= sunsetTimestamp
-//     ? 'day'
-//     : 'night';
-// };
+  return sunriseTimestamp <= nowTimeStamp && nowTimeStamp <= sunsetTimestamp
+    ? 'day'
+    : 'night';
+};
 
 const WeatherApp = () => {
   const [weatherElement, setWeatherElement] = useState({
@@ -250,7 +250,7 @@ const WeatherApp = () => {
     comfortability,
     isLoading,
   } = weatherElement;
-
+  console.log('weatherElement = ', weatherElement)
   const fetchData = useCallback(() => {
     const fetchingData = async () => {
       const [currentWeather, weatherForecast] = await Promise.all([
@@ -272,22 +272,20 @@ const WeatherApp = () => {
 
     fetchingData();
   }, []);
-  // TODO: fix error
-  // const moment = useMemo(() => getMoment(locationName), [locationName]);
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [fetchData]);
+  const moment = useMemo(() => getMoment(locationName), [locationName]);
 
-  // TODO: fix error
-  // useEffect(() => {
-  //   setCurrentTheme(moment === 'day' ? 'light' : 'dark');
-  // }, [moment]);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  useEffect(() => {
+    setCurrentTheme(moment === 'day' ? 'light' : 'dark');
+  }, [moment]);
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <Container>
-        {console.log('render, isLoading: ', isLoading)}
         <WeatherCard>
           <Location>{locationName}</Location>
           <Description>
@@ -299,27 +297,26 @@ const WeatherApp = () => {
             </Temperature>
             <WeatherIcon
               currentWeatherCode={weatherCode}
-              // TODO: fix error
-              // moment={moment || 'day'}
-              moment={'day'}
+              moment={moment || 'day'}
             />
           </CurrentWeather>
           <AirFlow>
-            {/* <AirFlowIcon /> */}
+            <img src='images/airflow.svg' alt='' />
             {windSpeed} m/h
           </AirFlow>
           <Rain>
-            {/* <RainIcon /> */}
+            <img src='images/rain.svg' alt='' />
             {Math.round(rainPossibility)} %
           </Rain>
-          <Refresh onClick={fetchData} isLoading={isLoading}>
+          <Refresh onClick={() => fetchData()} isLoading={isLoading}>
             最後觀測時間：
             {new Intl.DateTimeFormat('zh-TW', {
-            hour: 'numeric',
-            minute: 'numeric',
-          }).format(new Date(observationTime))}{' '}
-            {/* {isLoading ? <LoadingIcon /> : <RefreshIcon />} */}
-            {isLoading ? '<LoadingIcon />' : '<RefreshIcon />'}
+              hour: 'numeric',
+              minute: 'numeric',
+            }).format(new Date(observationTime))}{' '}
+            {isLoading ?
+              <img src='images/loading.svg' alt='isLoading' /> :
+              <img src='images/airFlow.svg' alt='' />}
           </Refresh>
         </WeatherCard>
       </Container>

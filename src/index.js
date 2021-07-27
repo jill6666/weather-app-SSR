@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import express from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
@@ -12,7 +13,10 @@ app.get("/", (req, res) => {
 
   const html = `
     <html>
-      <head></head>
+      <head>
+        <title> weather-app-SSR 用SSR改寫天氣APP </title>
+        <link rel="icon" href="https://img.icons8.com/material-outlined/24/000000/sun--v2.png" type="image/png">
+      </head>
       <body>
         <div id="root">${content}</div>
         <script src="bundle.js"></script>
