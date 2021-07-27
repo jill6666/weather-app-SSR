@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="136px" height="124px" viewBox="0 0 136 124" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>2682849 - cloud cloudy day forecast sun weather</title>
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>day-cloudy</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="24.3617045%" y1="72.8710337%" x2="63.6421593%" y2="39.9796521%" id="linearGradient-1">
@@ -13,7 +14,7 @@
         </linearGradient>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="2682849---cloud-cloudy-day-forecast-sun-weather" transform="translate(0.000000, 2.000000)">
+        <g id="day-cloudy" transform="translate(0.000000, 2.000000)">
             <circle id="Oval" fill="#EFCC00" fill-rule="nonzero" cx="84.5" cy="49.4446841" r="31.5"></circle>
             <path d="M84,-0.0553158818 L84,10.9446841" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
             <path d="M84,87.9446841 L84,98.9446841" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>

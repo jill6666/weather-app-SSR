@@ -1,19 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styled from '@emotion/styled';
-import DayThunderstorm from '../../../public/images/day-thunderstorm.svg';
-import DayClear from '../../../public/images/day-clear.svg';
-import DayCloudyFog from '../../../public/images/day-cloudy-fog.svg';
-import DayCloudy from '../../../public/images/day-cloudy.svg';
-import DayFog from '../../../public/images/day-fog.svg';
-import DayPartiallyClearWithRain from '../../../public/images/day-partially-clear-with-rain.svg';
-import DaySnowing from '../../../public/images/day-snowing.svg';
-import NightThunderstorm from '../../../public/images/night-thunderstorm.svg';
-import NightClear from '../../../public/images/night-clear.svg';
-import NightCloudyFog from '../../../public/images/night-cloudy-fog.svg';
-import NightCloudy from '../../../public/images/night-cloudy.svg';
-import NightFog from '../../../public/images/night-fog.svg';
-import NightPartiallyClearWithRain from '../../../public/images/night-partially-clear-with-rain.svg';
-import NightSnowing from '../../../public/images/night-snowing.svg';
 
 const weatherTypes = {
   isThunderstorm: [15, 16, 17, 18, 21, 22, 33, 34, 35, 36, 41],
@@ -41,7 +27,7 @@ const weatherTypes = {
   isSnowing: [23, 37, 42],
 };
 
-const weatherIcons = {
+export const weatherIcons = {
   day: {
     isThunderstorm: <img src='images/day-thunderstorm.svg' alt='' />,
     isClear: <img src='images/day-clear.svg' alt='' />,

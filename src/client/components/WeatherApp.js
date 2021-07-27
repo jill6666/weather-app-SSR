@@ -3,14 +3,6 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styled from '@emotion/styled';
 import WeatherIcon from './WeatherIcon.js';
 import { ThemeProvider } from 'emotion-theming';
-import { airFlowIcon } from '../../../public/images/airFlow.svg';
-import RainIcon from '../../../public/images/refresh.svg';
-import LoadingIcon from '../../../public/images/loading.svg';
-import RefreshIcon from '../../../public/images/airFlow.svg';
-import { ReactComponent as AirFlowIcon } from '../../../public/images/airFlow.svg';
-// import { ReactComponent as RainIcon } from '../../../public/images/refresh.svg';
-// import { ReactComponent as LoadingIcon } from '../../../public/images/loading.svg';
-// import { ReactComponent as RefreshIcon } from '../../../public/images/airFlow.svg';
 import sunriseAndSunsetData from './sunrise-sunset.json';
 
 const theme = {
