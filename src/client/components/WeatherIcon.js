@@ -1,33 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styled from '@emotion/styled';
-import DayThunderstorm from './images/day-thunderstorm.svg';
-// import DayClear from './images/day-clear.svg';
-import DayCloudyFog from './images/day-cloudy-fog.svg';
-import DayCloudy from './images/day-cloudy.svg';
-import DayFog from './images/day-fog.svg';
-import DayPartiallyClearWithRain from './images/day-partially-clear-with-rain.svg';
-import DaySnowing from './images/day-snowing.svg';
-import NightThunderstorm from './images/night-thunderstorm.svg';
-import NightClear from './images/night-clear.svg';
-import NightCloudyFog from './images/night-cloudy-fog.svg';
-import NightCloudy from './images/night-cloudy.svg';
-import NightFog from './images/night-fog.svg';
-import NightPartiallyClearWithRain from './images/night-partially-clear-with-rain.svg';
-import NightSnowing from './images/night-snowing.svg';
-// import { ReactComponent as DayThunderstorm } from './images/day-thunderstorm.svg';
-// import { ReactComponent as DayClear } from './images/day-clear.svg';
-// import { ReactComponent as DayCloudyFog } from './images/day-cloudy-fog.svg';
-// import { ReactComponent as DayCloudy } from './images/day-cloudy.svg';
-// import { ReactComponent as DayFog } from './images/day-fog.svg';
-// import { ReactComponent as DayPartiallyClearWithRain } from './images/day-partially-clear-with-rain.svg';
-// import { ReactComponent as DaySnowing } from './images/day-snowing.svg';
-// import { ReactComponent as NightThunderstorm } from './images/night-thunderstorm.svg';
-// import { ReactComponent as NightClear } from './images/night-clear.svg';
-// import { ReactComponent as NightCloudyFog } from './images/night-cloudy-fog.svg';
-// import { ReactComponent as NightCloudy } from './images/night-cloudy.svg';
-// import { ReactComponent as NightFog } from './images/night-fog.svg';
-// import { ReactComponent as NightPartiallyClearWithRain } from './images/night-partially-clear-with-rain.svg';
-// import { ReactComponent as NightSnowing } from './images/night-snowing.svg';
 
 const weatherTypes = {
   isThunderstorm: [15, 16, 17, 18, 21, 22, 33, 34, 35, 36, 41],
@@ -55,24 +27,24 @@ const weatherTypes = {
   isSnowing: [23, 37, 42],
 };
 
-const weatherIcons = {
+export const weatherIcons = {
   day: {
-    isThunderstorm: <DayThunderstorm />,
-    // isClear: <DayClear />,
-    isCloudyFog: <DayCloudyFog />,
-    isCloudy: <DayCloudy />,
-    isFog: <DayFog />,
-    isPartiallyClearWithRain: <DayPartiallyClearWithRain />,
-    isSnowing: <DaySnowing />,
+    isThunderstorm: <img src='../../images/day-thunderstorm.svg' alt='thunderstorm' />,
+    isClear: <img src='../../images/day-clear.svg' alt='clear' />,
+    isCloudyFog: <img src='../../images/day-cloudy-fog.svg' alt='cloudy-fog' />,
+    isCloudy: <img src='../../images/day-cloudy.svg' alt='cloudy' />,
+    isFog: <img src='../../images/day-fog.svg' alt='fog' />,
+    isPartiallyClearWithRain: <img src='../../images/day-partially-clear-with-rain' alt='rain' />,
+    isSnowing: <img src='../../images/day-snowing.svg' alt='snowing' />,
   },
   night: {
-    isThunderstorm: <NightThunderstorm />,
-    isClear: <NightClear />,
-    isCloudyFog: <NightCloudyFog />,
-    isCloudy: <NightCloudy />,
-    isFog: <NightFog />,
-    isPartiallyClearWithRain: <NightPartiallyClearWithRain />,
-    isSnowing: <NightSnowing />,
+    isThunderstorm: <img src='../../images/night-thunderstorm.svg' alt='thunderstorm' />,
+    isClear: <img src='../../images/night-clear.svg' alt='clear' />,
+    isCloudyFog: <img src='../../images/night-cloudy-fog.svg' alt='cloudy-fog' />,
+    isCloudy: <img src='../../images/night-cloudy.svg' alt='cloudy' />,
+    isFog: <img src='../../images/night-fog.svg' alt='fog' />,
+    isPartiallyClearWithRain: <img src='../../images/night-partially-clear-with-rain' alt='rain' />,
+    isSnowing: <img src='../../images/night-snowing.svg' alt='snowing' />,
   },
 };
 

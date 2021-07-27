@@ -7,6 +7,7 @@ module.exports = {
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "public"),
+        publicPath: './src/client/client.js'
     },
     module: {
         rules: [
@@ -31,8 +32,18 @@ module.exports = {
                 ],
             },
             {
-                test: /\.svg$/,
-                use: ['svg-inline-loader']
+                test: /\.svg/,
+                use: [
+                    {
+                        loader: 'svg-url-loader?limit=1000000&mimetype=image/svg+xml',
+                    },
+                    {
+                        loader: './src/client/images',
+                    }
+                ],
+                options: {
+                    publicPath: 'build'
+                }
             },
         ],
     },

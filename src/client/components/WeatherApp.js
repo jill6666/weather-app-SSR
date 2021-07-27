@@ -2,15 +2,9 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styled from '@emotion/styled';
 import WeatherIcon from './WeatherIcon.js';
 import { ThemeProvider } from 'emotion-theming';
-// import RainIcon from './images/rain.svg';
-// import RefreshIcon from './images/refresh.svg';
-// import LoadingIcon from './images/loading.svg';
-
-// import AirFlowIcon from './images/airFlow.svg';
-// import { ReactComponent as AirFlowIcon } from './images/airFlow.svg';
-// import { ReactComponent as RainIcon } from './images/rain.svg';
-// import { ReactComponent as RefreshIcon } from './images/refresh.svg';
-// import { ReactComponent as LoadingIcon } from './images/loading.svg';
+import { weatherIcons } from './WeatherIcon';
+// import RefreshIcon from '../images/refresh.svg';
+// import LoadingIcon from '../images/loading.svg';
 import sunriseAndSunsetData from './sunrise-sunset.json';
 
 const theme = {
@@ -305,11 +299,11 @@ const WeatherApp = () => {
             />
           </CurrentWeather>
           <AirFlow>
-            {/* <AirFlowIcon /> */}
+            <img src='../images/airFlow.svg' alt='airFlow' />
             {windSpeed} m/h
           </AirFlow>
           <Rain>
-            {/* <RainIcon /> */}
+            <img src='../images/rain.svg' alt='airFlow' />
             {Math.round(rainPossibility)} %
           </Rain>
           <Refresh onClick={fetchData} isLoading={isLoading}>
@@ -319,7 +313,7 @@ const WeatherApp = () => {
             minute: 'numeric',
           }).format(new Date(observationTime))}{' '}
             {/* {isLoading ? <LoadingIcon /> : <RefreshIcon />} */}
-            {isLoading ? '<LoadingIcon />' : '<RefreshIcon />'}
+            {isLoading ? <img src='../images/loading.svg' alt='' /> : <img src='../images/refresh.svg' alt='refresh' />}
           </Refresh>
         </WeatherCard>
       </Container>
