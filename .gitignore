@@ -354,3 +354,4 @@ env-config.js
 
 # build for Visual Studio
 build/
+public/
