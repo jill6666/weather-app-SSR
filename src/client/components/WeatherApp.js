@@ -242,7 +242,6 @@ const WeatherApp = () => {
     comfortability,
     isLoading,
   } = weatherElement;
-  console.log('weatherElement = ', weatherElement)
   const fetchData = useCallback(() => {
     const fetchingData = async () => {
       const [currentWeather, weatherForecast] = await Promise.all([

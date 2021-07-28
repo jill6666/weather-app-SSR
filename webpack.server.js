@@ -2,7 +2,6 @@ const path = require("path");
 const webpackNodeExternals = require("webpack-node-externals");
 
 module.exports = {
-    mode: 'development',
     target: "node",
     entry: ['@babel/polyfill', "./src/index.js"],
     output: {
@@ -38,15 +37,6 @@ module.exports = {
                 },
             },
         ],
-    },
-    resolve: {
-        extensions: [
-            '.js',
-            '.jsx'
-        ],
-        alias: {
-            'react-dom': '@hot-loader/react-dom'
-        }
     },
     devServer: {
         contentBase: './dist'
