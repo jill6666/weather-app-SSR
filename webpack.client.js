@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+    mode: "development",
     target: "node",
     entry: ['@babel/polyfill', "./src/client/client.js"],
     output: {

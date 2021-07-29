@@ -2,11 +2,13 @@ const path = require("path");
 const webpackNodeExternals = require("webpack-node-externals");
 
 module.exports = {
+    mode: "development",
     target: "node",
     entry: ['@babel/polyfill', "./src/index.js"],
+    target: 'web',
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "build"),
+        path: path.resolve(__dirname, "/"),
         publicPath: 'http://localhost:3000'
     },
     module: {

@@ -1,5 +1,5 @@
 {
-  "name": "weather-app-add-dark-mode-feature",
+  "name": "weather-app-ssr",
   "homepage": "https://jill6666.github.io/weather-app-SSR/",
   "version": "1.0.0",
   "description": "",
@@ -44,8 +44,8 @@
   },
   "scripts": {
     "dev:server": "nodemon --inspect build/bundle.js",
-    "dev:build:server": "webpack --mode production --config webpack.server.js --watch",
-    "dev:build:client": "webpack --mode production --config webpack.client.js --watch",
+    "dev:build:server": "webpack --config webpack.server.js --watch",
+    "dev:build:client": "webpack --config webpack.client.js --watch",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
