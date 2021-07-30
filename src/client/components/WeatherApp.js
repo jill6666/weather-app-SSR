@@ -292,7 +292,7 @@ const WeatherApp = () => {
             />
           </CurrentWeather>
           <AirFlow>
-            <img src='images/airflow.svg' alt='' />
+            <img src='images/airFlow.svg' alt='' />
             {windSpeed} m/h
           </AirFlow>
           <Rain>

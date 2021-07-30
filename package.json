@@ -46,6 +46,8 @@
     "dev:server": "nodemon --inspect build/bundle.js",
     "dev:build:server": "webpack --config webpack.server.js --watch",
     "dev:build:client": "webpack --config webpack.client.js --watch",
+    "build": "webpack --config webpack.server.js && webpack --config webpack.client.js",
+    "heroku:start": "node build/bundle.js",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
