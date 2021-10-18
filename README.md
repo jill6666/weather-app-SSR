@@ -52,6 +52,9 @@ The moment data is hardcode not fetch the real data.
   # see logs of the app
   $ heroku logs --tail
 ```
+#### Roadmap
+- [ ] preload weather data before the render
+- [ ] get user's location and fetch the real weather data
 
 Note for Troubleshooting
 - [Why is my Node.js app crashing with an R10 error](https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error)
